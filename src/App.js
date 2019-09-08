@@ -1,13 +1,27 @@
-import React from 'react';
-import NavBar from './components/layout/NavBar'
-import './App.css';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
-      <NavBar />
-    </div>
-  );
+import NavBar from './components/layout/NavBar'
+
+import { setArray } from './store/reducers/array'
+
+class App extends Component {
+  componentDidMount() {
+    this.props.setInitialArray()
+  }
+  render() {
+    return (
+      <div>
+        <NavBar />
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    setInitialArray: () => dispatch(setArray(Math.floor(5 + (100 - 5) / 2)))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)

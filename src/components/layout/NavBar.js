@@ -11,30 +11,59 @@ import {
 import { setArray } from '../../store/reducers/array'
 
 class NavBar extends Component {
+  handleChange = event => {
+    this.props.setArraySize(event.target.value)
+  }
+
+  pickSort = sort => {
+    const { selectBubbleSort, selectSelectionSort, selectInsertionSort, selectQuickSort, selectMergeSort } = this.props
+    switch (sort) {
+      case 'bubbleSort':
+        return selectBubbleSort()
+      case 'selectionSort':
+        return selectSelectionSort()
+      case 'insertionSort':
+        return selectInsertionSort()
+      case 'quickSort':
+        return selectQuickSort()
+      case 'mergeSort':
+        return selectMergeSort()
+      default:
+        console.error('Unknown sort')
+    }
+  }
+
+  currentSort = sort => {
+    if (sort === this.props.currentSort) {
+      return {
+        textDecoration: 'underline'
+      }
+    }
+  }
+
   render() {
+    const { handleChange, pickSort, currentSort } = this
     return (
       <nav>
         <ul>
           <li>
-            <h4>There will be a input drag bar to indicate how many elements are in the initial unsorted array</h4>
+            <input type="range" onChange={handleChange} name="numElements" min="5" max="100"></input>
+            <label>Set Array Size</label>
           </li>
-          <li>
-            <h4>Bubble Sort</h4>
+          <li onClick={() => pickSort('bubbleSort')}>
+            <h4 style={currentSort('bubbleSort')}>Bubble Sort</h4>
           </li>
-          <li>
-            <h4>Selection Sort</h4>
+          <li onClick={() => pickSort('selectionSort')}>
+            <h4 style={currentSort('selectionSort')}> Selection Sort</h4>
           </li>
-          <li>
-            <h4>Insertion Sort</h4>
+          <li onClick={() => pickSort('insertionSort')}>
+            <h4 style={currentSort('insertionSort')}> Insertion Sort</h4>
           </li>
-          <li>
-            <h4>Quick Sort</h4>
+          <li onClick={() => pickSort('quickSort')}>
+            <h4 style={currentSort('quickSort')}> Quick Sort</h4>
           </li>
-          <li>
-            <h4>Heap Sort</h4>
-          </li>
-          <li>
-            <h4>Merge Sort</h4>
+          <li onClick={() => pickSort('mergeSort')}>
+            <h4 style={currentSort('mergeSort')}> Merge Sort</h4>
           </li>
         </ul>
       </nav>
