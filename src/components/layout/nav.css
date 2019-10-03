@@ -1,0 +1,39 @@
+header {
+  background-color: #55d6aa;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#arraySizeAdjuster {
+  margin: 17px auto;
+  float: left;
+}
+
+#sortPicker {
+  float: right;
+}
+
+/*
+the header::after psuedo element we declared will solve the issue of the
+div container shrinking to 0px x 0px after the 2 elements (#arraySizeAdjuster and #sortPicker)
+has been floated to left and right, respectively
+*/
+header::after {
+  content: '';
+  display: table; 
+  clear: both;
+}
+
+#sortPicker ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#sortPicker li {
+  display: inline-block;
+  margin-left: 35px; 
+}

@@ -9,6 +9,7 @@ import {
   mergeSort
 } from '../../store/reducers/currentSort'
 import { setArray } from '../../store/reducers/array'
+import './nav.css'
 
 class NavBar extends Component {
   handleChange = event => {
@@ -44,29 +45,33 @@ class NavBar extends Component {
   render() {
     const { handleChange, pickSort, currentSort } = this
     return (
-      <nav>
-        <ul>
-          <li>
+      <header>
+        <div className='container'>
+          <div id='arraySizeAdjuster'>
             <input type="range" onChange={handleChange} name="numElements" min="5" max="100"></input>
             <label>Set Array Size</label>
-          </li>
-          <li onClick={() => pickSort('bubbleSort')}>
-            <h4 style={currentSort('bubbleSort')}>Bubble Sort</h4>
-          </li>
-          <li onClick={() => pickSort('selectionSort')}>
-            <h4 style={currentSort('selectionSort')}> Selection Sort</h4>
-          </li>
-          <li onClick={() => pickSort('insertionSort')}>
-            <h4 style={currentSort('insertionSort')}> Insertion Sort</h4>
-          </li>
-          <li onClick={() => pickSort('quickSort')}>
-            <h4 style={currentSort('quickSort')}> Quick Sort</h4>
-          </li>
-          <li onClick={() => pickSort('mergeSort')}>
-            <h4 style={currentSort('mergeSort')}> Merge Sort</h4>
-          </li>
-        </ul>
-      </nav>
+          </div>
+          <div id='sortPicker'>
+            <ul>
+              <li onClick={() => pickSort('bubbleSort')}>
+                <h4 style={currentSort('bubbleSort')}>Bubble Sort</h4>
+              </li>
+              <li onClick={() => pickSort('selectionSort')}>
+                <h4 style={currentSort('selectionSort')}> Selection Sort</h4>
+              </li>
+              <li onClick={() => pickSort('insertionSort')}>
+                <h4 style={currentSort('insertionSort')}> Insertion Sort</h4>
+              </li>
+              <li onClick={() => pickSort('quickSort')}>
+                <h4 style={currentSort('quickSort')}> Quick Sort</h4>
+              </li>
+              <li onClick={() => pickSort('mergeSort')}>
+                <h4 style={currentSort('mergeSort')}> Merge Sort</h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
     )
   }
 }

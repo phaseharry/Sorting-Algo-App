@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import NavBar from './components/layout/NavBar'
-
 import { setArray } from './store/reducers/array'
+import './main.css'
+
 
 class App extends Component {
   componentDidMount() {
@@ -11,9 +12,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <Fragment>
         <NavBar />
-      </div>
+        <div></div>
+      </Fragment>
     )
   }
 }
