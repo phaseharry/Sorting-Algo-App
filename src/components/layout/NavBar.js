@@ -57,18 +57,24 @@ class NavBar extends Component {
                 <h4 style={currentSort('bubbleSort')}>Bubble Sort</h4>
               </li>
               <li onClick={() => pickSort('selectionSort')}>
-                <h4 style={currentSort('selectionSort')}> Selection Sort</h4>
+                <h4 style={currentSort('selectionSort')}>Selection Sort</h4>
               </li>
               <li onClick={() => pickSort('insertionSort')}>
-                <h4 style={currentSort('insertionSort')}> Insertion Sort</h4>
+                <h4 style={currentSort('insertionSort')}>Insertion Sort</h4>
               </li>
               <li onClick={() => pickSort('quickSort')}>
-                <h4 style={currentSort('quickSort')}> Quick Sort</h4>
+                <h4 style={currentSort('quickSort')}>Quick Sort</h4>
               </li>
               <li onClick={() => pickSort('mergeSort')}>
-                <h4 style={currentSort('mergeSort')}> Merge Sort</h4>
+                <h4 style={currentSort('mergeSort')}>Merge Sort</h4>
               </li>
             </ul>
+          </div>
+          <div id="controlContainer">
+            <div>
+              <button>Start</button>
+              <button>Pause</button>
+            </div>
           </div>
         </div>
       </header>
@@ -79,7 +85,7 @@ class NavBar extends Component {
 const mapStateToProps = state => {
   return {
     currentSort: state.currentSort,
-    isSorting: state.isSorting
+    isSorting: state.isSorting,
   }
 }
 

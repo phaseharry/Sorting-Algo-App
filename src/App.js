@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import NavBar from './components/layout/NavBar'
+import MainView from './components/views/MainView'
 import { setArray } from './store/reducers/array'
 import './main.css'
 
@@ -14,9 +15,15 @@ class App extends Component {
     return (
       <Fragment>
         <NavBar />
-        <div></div>
+        <MainView />
       </Fragment>
     )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    array: state.array
   }
 }
 
@@ -26,4 +33,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
